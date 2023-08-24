@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer-deployment
+  labels:
+    app: consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumer
+  template:
+    metadata:
+      labels:
+        app: consumer
+    spec:
+      containers:
+      - name: hello-recvng
+        image: hegdesrishti/consumer:9.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: RMQ_USERNAME
+          valueFrom:
+            secretKeyRef:
+                name: hello-world-default-user
+                key: username
+        - name: RMQ_PASSWD
+          valueFrom:
+            secretKeyRef:
+                name: hello-world-default-user
+                key: password

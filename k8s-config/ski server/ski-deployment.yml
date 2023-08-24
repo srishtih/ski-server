@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ski-server-deployment
+  labels:
+    app: ski-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ski-server
+  template:
+    metadata:
+      labels:
+        app: ski-server
+    spec:
+      containers:
+      - name: mission-ridge
+        image: hegdesrishti/skiserver:9.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: RMQ_USERNAME
+          valueFrom:
+            secretKeyRef:
+                name: hello-world-default-user
+                key: username
+        - name: RMQ_PASSWD
+          valueFrom:
+            secretKeyRef:
+                name: hello-world-default-user
+                key: password
