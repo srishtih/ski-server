@@ -4,6 +4,11 @@ The consumer will pull this data and write in in suitable key-value format into 
 
 We start by creating an EKS cluster, add a 5 replica node group nd set Kubeconfig. We start off by deploying RabbitMQ as a K8s service, followed by deploying a Java web application as a service. Next, we set up Redis database as a service too in leader-follower format. Finally we deploy the consumer that passes the data from server to Redis.
 
+## Architecture Diagram
+
+![architecture-diagram](./skiserver.png)
+
+
 All the manifest files(within k8s-config folder) and java source code are included in this repository
 
 ## Detailed set-up steps:
