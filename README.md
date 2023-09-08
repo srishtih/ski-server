@@ -1,4 +1,4 @@
-# Implemting the ski resort backend system using Kubernetes
+# Implementing the ski resort backend system using Kubernetes
 The implementation records ski lift rides from different lifts, resorts into a redis database. All requests from clients are validated at server and then written into a RabbitMQ queue and lift rides as JSON objects.
 The consumer will pull this data and write in in suitable key-value format into Redis.
 
